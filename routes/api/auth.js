@@ -14,6 +14,14 @@ router.get("/", (req, res) => res.json({test: "Auth is being tested.."}));
 //Import Schema for Person to Register
 const Person = require("../../models/Person");
 
-
+//@type     -   POST
+//@route    -   /api/auth/registration
+//@desc     -   route for registration of users
+//@access   -   PUBLIC
+router.post("/register", (req, res) => {
+    Person.findOne({ email: req.body.email })
+        .then()
+        .catch(err => console.log(err));
+});
 
 module.exports = router;
