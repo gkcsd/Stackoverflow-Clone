@@ -29,7 +29,18 @@ router.post("/register", (req, res) => {
                     email: req.body.email,
                     password: req.body.password
                 });
+                //Encrypt password using bcrypt
+                bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(newPerson.password, salt, (err, hash) => {
+                    if(err) throw err;
+                    newPerson.password = hash;
 
+                    //For saving to database
+                    newPerson.save()
+                        .then( person => res.json(person))
+                        .catch(err => console.log(err));
+                });
+});
             }
         })
         .catch(err => console.log(err));
