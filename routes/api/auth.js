@@ -15,7 +15,7 @@ router.get("/", (req, res) => res.json({test: "Auth is being tested.."}));
 const Person = require("../../models/Person");
 
 //@type     -   POST
-//@route    -   /api/auth/registration
+//@route    -   /api/auth/register
 //@desc     -   route for registration of users
 //@access   -   PUBLIC
 router.post("/register", (req, res) => {
